@@ -12,7 +12,7 @@ ClientHandler.prototype.handle = function(socket) {
 
     console.log('a user connected');
     socket.on('user:connected', function (user) {
-        socket.clients[socket.id] = user;
+        clients[socket.id] = user;
         console.log(user.name + " has connected");
         io.emit('user:joined', {
             'name': user.name
@@ -20,7 +20,7 @@ ClientHandler.prototype.handle = function(socket) {
     });
 
     socket.on('message', function (message) {
-            console.log(this.clients);
+        //console.log(this.clients);
 
         var envelope = {};
         envelope.userName = clients[socket.id].name;
@@ -32,6 +32,5 @@ ClientHandler.prototype.handle = function(socket) {
         console.log('user disconnected');
     });
 };
-
 
 module.exports = ClientHandler;

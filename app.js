@@ -83,9 +83,7 @@ function handleConnection(socket) {
     });
     socket.on('disconnect', function () {
         console.log('user disconnected');
-        io.emit('user:left', {
-            clients[socket.id].name;
-        }
+        io.emit('user:left', clients[socket.id]);
         delete clients[socket.id];
 
     });
