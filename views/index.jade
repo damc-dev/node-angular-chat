@@ -1,24 +1,31 @@
 extends layout
 
 block body
+
   div(ng-controller='AppCtrl')
-    h2 Hello {{name}}
-    ul.menu
-      li
-        a(href='view1') view1
-      li
-        a(href='view2') view2
+    md-toolbar.md-theme-light
+      h1.md-toolbar-tools
+        span Angular Socket.io Chat Application
+    md-content.md-theme-light(ng-controller='ChatCtrl')
+      md-list
+        md-item(ng-repeat='item in messages')
+          md-item-content
+            div.md-tile-content
+              h4 {{item.userName}}
+              p {{item.msg}}
 
-    div(ng-view)
-
-    div
-      | Angular Socket.io seed app: v
-      span(app-version)
+    md-content
+      form(ng-submit='sendMessage()', ng-controller='MessageCtrl')
+        input(ng-model='message')
+        input(type='submit', value='Send')
 
   script(src='/socket.io/socket.io.js')
   script(src='bower_components/angular/angular.js')
   script(src='bower_components/angular-route/angular-route.js')
   script(src='bower_components/angular-socket-io/socket.js')
+  script(src='bower_components/angular-bootstrap/ui-bootstrap.js')
+  script(src='bower_components/angular-material/angular-material.js')
+  script(src='bower_components/angular-prompt/angular-prompt.js')
   script(src='js/app.js')
   script(src='js/services.js')
   script(src='js/controllers.js')

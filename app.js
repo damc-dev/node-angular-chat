@@ -68,6 +68,7 @@ function handleConnection(socket) {
     console.log('a user connected');
     socket.on('user:connected', function (user) {
         clients[socket.id] = user;
+        io.emit('send:name', user.name);
         console.log(user.name + " has connected");
         io.emit('user:joined', {
             'name': user.name
