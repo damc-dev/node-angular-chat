@@ -15,12 +15,15 @@ block body
               p {{item.msg}}
 
     md-content
-      form(ng-submit='sendMessage()', ng-controller='MessageCtrl')
-        input(ng-model='message')
-        input(type='submit', value='Send')
+      form.form-horizontal(ng-submit='sendMessage()', ng-controller='MessageCtrl')
+        md-input-container
+          input.col-sm-10(ng-model='message')
+          input.col-sm-2(type='submit', value='Send')
 
   script(src='/socket.io/socket.io.js')
   script(src='bower_components/angular/angular.js')
+  script(src='bower_components/angular-animate/angular-animate.js')
+  script(src='bower_components/angular-aria/angular-aria.js')
   script(src='bower_components/angular-route/angular-route.js')
   script(src='bower_components/angular-socket-io/socket.js')
   script(src='bower_components/angular-bootstrap/ui-bootstrap.js')

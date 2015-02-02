@@ -4,6 +4,7 @@
 
 angular.module('myApp', [
   'ngRoute',
+  'ngAnimate',
 
   'myApp.controllers',
   'myApp.filters',
@@ -13,7 +14,7 @@ angular.module('myApp', [
   // 3rd party dependencies
   'btford.socket-io',
   'ui.bootstrap',
-  'cgPrompt'
+  'ngMaterial'
 ]).
 config(function ($routeProvider, $locationProvider) {
   $routeProvider.
