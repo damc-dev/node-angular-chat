@@ -4,14 +4,14 @@
 
 var express = require('express'),
     routes = require('./routes'),
-    api = require('./routes/api'),
+    //api = require('./routes/api'),
     http = require('http'),
     path = require('path');
 
 var app = module.exports = express();
 var server = require('http').createServer(app);
 var io = require('socket.io').listen(server);
-var clientHandler = require('./routes/clientHandler')
+//var clientHandler = require('./routes/clientHandler')
 var clients = [];
 
 /**
@@ -43,12 +43,8 @@ if (app.get('env') === 'production') {
  * Routes
  */
 
-// serve index and view partials
+// serve index
 app.get('/', routes.index);
-app.get('/partials/:name', routes.partials);
-
-// JSON API
-app.get('/api/name', api.name);
 
 // redirect all others to the index (HTML5 history)
 app.get('*', routes.index);

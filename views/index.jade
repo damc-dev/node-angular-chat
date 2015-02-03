@@ -6,19 +6,23 @@ block body
     md-toolbar.md-theme-light
       h1.md-toolbar-tools
         span Angular Socket.io Chat Application
-    md-content.md-theme-light(ng-controller='ChatCtrl')
+    md-content.md-theme-light(ng-controller='ChatCtrl', style='overflow:auto; height:800px;')
       md-list
         md-item(ng-repeat='item in messages')
           md-item-content
             div.md-tile-content
-              h4 {{item.userName}}
-              p {{item.msg}}
+              h4
+                b{{item.userName}}:
+                {{item.msg}}
+        div#bottom(style='display:block; margin-top:64px;')
 
     md-content
       form.form-horizontal(ng-submit='sendMessage()', ng-controller='MessageCtrl')
-        md-input-container
-          input.col-sm-10(ng-model='message')
-          input.col-sm-2(type='submit', value='Send')
+        section(layout='row', layout-align='center center')
+          md-input-container(flex)
+            input(ng-model='message')
+          md-input-container
+            md-button.md-primary Submit
 
   script(src='/socket.io/socket.io.js')
   script(src='bower_components/angular/angular.js')
@@ -26,11 +30,7 @@ block body
   script(src='bower_components/angular-aria/angular-aria.js')
   script(src='bower_components/angular-route/angular-route.js')
   script(src='bower_components/angular-socket-io/socket.js')
-  script(src='bower_components/angular-bootstrap/ui-bootstrap.js')
   script(src='bower_components/angular-material/angular-material.js')
-  script(src='bower_components/angular-prompt/angular-prompt.js')
   script(src='js/app.js')
   script(src='js/services.js')
   script(src='js/controllers.js')
-  script(src='js/filters.js')
-  script(src='js/directives.js')

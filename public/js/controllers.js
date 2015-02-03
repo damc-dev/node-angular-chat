@@ -2,31 +2,22 @@
 
 /* Controllers */
 
-angular.module('myApp.controllers', ['ui.bootstrap']).
+angular.module('myApp.controllers', []).
   controller('AppCtrl', function ($scope, socket) {
-
     socket.emit('user:connected', {'name': prompt("Please enter user name", "Bob")});
-
     socket.on('send:name', function (data) {
       $scope.name = data;
     });
-
-
   }).
-  controller('MyCtrl1', function ($scope, socket) {
-    socket.on('send:time', function (data) {
-      $scope.time = data.time;
-    });
-  }).
-  controller('MyCtrl2', function ($scope) {
-    // write Ctrl here
-  }).
-  controller('ChatCtrl', function($scope, socket) {
+  controller('ChatCtrl', ['$scope', 'socket', '$location', '$anchorScroll', function($scope, socket, $location, $anchorScroll) {
     $scope.messages =[];
     socket.on('message', function(envelope) {
       $scope.messages.push(envelope);
+      $location.hash('bottom');
+      $anchorScroll.yOffset=64;
+      $anchorScroll();
     });
-  }).
+  }]).
   controller('MessageCtrl', function($scope, socket) {
     console.log('Message Controller');
     $scope.sendMessage = function() {

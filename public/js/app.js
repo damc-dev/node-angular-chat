@@ -7,13 +7,10 @@ angular.module('myApp', [
   'ngAnimate',
 
   'myApp.controllers',
-  'myApp.filters',
   'myApp.services',
-  'myApp.directives',
 
   // 3rd party dependencies
   'btford.socket-io',
-  'ui.bootstrap',
   'ngMaterial'
 ]).
 config(function ($routeProvider, $locationProvider) {

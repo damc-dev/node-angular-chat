@@ -1,0 +1,24 @@
+{
+  "name": "node-angular-chat",
+  "version": "1.0.0",
+  "homepage": "https://github.com/damc-dev/node-angular-chat",
+  "authors": [
+    "David McElligott <damc.dev@gmail.com>"
+  ],
+  "description": "A Simple Chat application",
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular-material": "~0.7.1",
+    "angular-socket-io": "~0.7.0",
+    "angular-route": "~1.3.11",
+    "angular": "~1.3.11"
+  }
+}
