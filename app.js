@@ -4,14 +4,12 @@
 
 var express = require('express'),
     routes = require('./routes'),
-    //api = require('./routes/api'),
     http = require('http'),
     path = require('path');
 
 var app = module.exports = express();
 var server = require('http').createServer(app);
 var io = require('socket.io').listen(server);
-//var clientHandler = require('./routes/clientHandler')
 var clients = [];
 
 /**
@@ -69,7 +67,7 @@ function handleConnection(socket) {
         io.emit('user:joined', {
             'name': user.name
         });
-        console.log(clients);
+        //console.log(clients);
     });
     socket.on('message', function (message) {
         var envelope = {};
