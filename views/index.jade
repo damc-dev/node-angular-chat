@@ -2,11 +2,11 @@ extends layout
 
 block body
 
-  div(ng-controller='AppCtrl')
-    md-toolbar.md-theme-light
+  div#main(ng-controller='AppCtrl')
+    md-toolbar#title-bar.md-theme-light
       h1.md-toolbar-tools
         span Angular Socket.io Chat Application
-    md-content.md-theme-light(ng-controller='ChatCtrl', style='overflow:auto; height:800px;')
+    md-content#chat.md-theme-light(ng-controller='ChatCtrl')
       md-list
         md-item(ng-repeat='item in messages')
           md-item-content
@@ -16,9 +16,9 @@ block body
                 //- This is to preserve space after username
                 = ' '
                 {{item.msg}}
-        div#bottom(style='display:block; margin-top:64px;')
+        div#bottom
 
-    md-content
+    md-content#message-input
       form.form-horizontal(ng-submit='sendMessage()', ng-controller='MessageCtrl')
         section(layout='row', layout-align='center center')
           md-input-container(flex)
