@@ -37,7 +37,7 @@ html, body {
 }
 #room {
   min-width: 200px;
-  background-color:gray;
+  background-color:lightgray;
 }
 
 .user {
