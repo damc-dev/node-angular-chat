@@ -16,8 +16,11 @@ html, body {
   height:64px;
   margin-top:-64px;
 }
-
+#container {
+  height:100%;
+}
 #chat {
+  width:100%;
   height:100%;
   overflow:auto;
 }
@@ -32,7 +35,16 @@ html, body {
   margin-top:50px;
   display:block;
 }
+#room {
+  min-width: 200px;
+  background-color:gray;
+}
 
+.user {
+  background-color:white;
+  margin:10px;
+  padding:0 15px 0 15px;
+}
 .menu {
   list-style: none;
   border-bottom: 0.1em solid black;

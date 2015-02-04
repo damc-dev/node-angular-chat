@@ -9,6 +9,13 @@ angular.module('myApp.controllers', []).
       $scope.name = data;
     });
   }).
+  controller('RoomCtrl', function($scope, socket) {
+    $scope.users = [];
+    socket.on('room:update', function(users) {
+      console.log(users);
+      $scope.users = users;
+    });
+  }).
   controller('ChatCtrl', ['$scope', 'socket', '$location', '$anchorScroll', function($scope, socket, $location, $anchorScroll) {
     $scope.messages =[];
     socket.on('message', function(envelope) {
@@ -16,6 +23,12 @@ angular.module('myApp.controllers', []).
       $location.hash('bottom');
       $anchorScroll.yOffset=64;
       $anchorScroll();
+    });
+    socket.on('user:joined', function(user) {
+      $scope.messages.push({msg: user.name + ' has joined.'});
+    });
+    socket.on('user:left', function(user) {
+      $scope.messages.push({msg: user.name + ' has left.'});
     });
   }]).
   controller('MessageCtrl', function($scope, socket) {

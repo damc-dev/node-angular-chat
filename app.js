@@ -67,7 +67,7 @@ function handleConnection(socket) {
         io.emit('user:joined', {
             'name': user.name
         });
-        //console.log(clients);
+        io.emit('room:update', convertToPlainArray(clients));
     });
     socket.on('message', function (message) {
         var envelope = {};
@@ -80,6 +80,18 @@ function handleConnection(socket) {
         console.log('user disconnected');
         io.emit('user:left', clients[socket.id]);
         delete clients[socket.id];
-
+        io.emit('room:update', convertToPlainArray(clients));
     });
+
+    function convertToPlainArray(associativeArray) {
+      var plainArray = [];
+      for (key in associativeArray) {
+        var obj = {};
+        obj.socketId = key;
+        obj.user = associativeArray[key];
+        plainArray.push(obj);
+      }
+      console.log(plainArray);
+      return plainArray;
+    }
 }
