@@ -13,6 +13,8 @@ block body
             div.md-tile-content
               h4
                 b{{item.userName}}:
+                //- This is to preserve space after username
+                = ' '
                 {{item.msg}}
         div#bottom(style='display:block; margin-top:64px;')
 
